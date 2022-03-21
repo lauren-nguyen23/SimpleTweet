@@ -23,7 +23,7 @@ class ComposeActivity : AppCompatActivity() {
 
     lateinit var client: TwitterClient
 
-    var charsRemaining:Int = 280
+    val MAX_LENGTH:Int = 280
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,10 +80,14 @@ class ComposeActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 // Fires right as the text is being changed (even supplies the range of text)
                 var count:Int = etCompose.getText().toString().length
-                tvCharacterCount.setText((280-count).toString())
-                if (count > 280) {
+                tvCharacterCount.setText((MAX_LENGTH-count).toString())
+                if (count > 10) {
                     btnTweet.isEnabled = false
                     tvCharacterCount.setTextColor(Color.RED)
+                }
+                else {
+                    btnTweet.isEnabled = true
+                    tvCharacterCount.setTextColor(Color.BLACK)
                 }
             }
 
