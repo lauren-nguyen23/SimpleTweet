@@ -81,7 +81,7 @@ class ComposeActivity : AppCompatActivity() {
                 // Fires right as the text is being changed (even supplies the range of text)
                 var count:Int = etCompose.getText().toString().length
                 tvCharacterCount.setText((MAX_LENGTH-count).toString())
-                if (count > 10) {
+                if (count > MAX_LENGTH) {
                     btnTweet.isEnabled = false
                     tvCharacterCount.setTextColor(Color.RED)
                 }
